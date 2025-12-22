@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Homepage</title>
+</head>
+<body>
+    <h3>Messages</h3>
+    <ul>
+        
+            <% for (let i=0; i<messages.length; i++) { %>
+               
+                   <h5 style="margin-bottom: .2rem; font-size: 1rem;"> <%=messages[i].user%></h5>
+                    <li>
+                        <%=messages[i].text%>
+                    </li>
+                     <li>
+                        <%=messages[i].added%>
+                    </li>
+                  
+                    <% } %>
+                
+    </ul>
+</body>
+</html>
