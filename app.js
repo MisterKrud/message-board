@@ -1,26 +1,23 @@
 const express = require('express');
 const app = express();
 const path = require('node:path')
+const indexRouter = require('./routes/indexRouter')
+const messageRouter = require('./routes/messageRouter')
 const assetsPath = path.join(__dirname, 'public')
 
-const messages = [
-    {
-        text: 'Hi there!',
-        user: 'Lenore',
-        added: new Date()
-    },
-    {
-        text: 'Well.. Hello',
-        user: 'Allyn',
-        added: new Date()
-    }
-]
+
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use(express.static(assetsPath));
-app.get('/', (req, res) => {
-    res.render('index', {title: 'Mini Messageboard', messages: messages})
+app.use(express.urlencoded({extended: true}));
+
+
+app.use('/', indexRouter);
+app.use('/messages', messageRouter)
+
+app.get('/new', (req, res) =>{
+    res.render('form')
 })
 
 const PORT = 3000

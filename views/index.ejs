@@ -11,13 +11,15 @@
                    <h5 style="margin-bottom: .2rem; font-size: 1rem;"> <%=messages[i].user%></h5>
                     <li>
                         <%=messages[i].text%>
+                       <a href="<%= `messages/${messages[i].id}` %>">View message details</a>
                     </li>
-                     <li>
-                        <%=messages[i].added%>
-                    </li>
+                     
                   
                     <% } %>
+                    
                 
     </ul>
+    <br>
+    <a href="new">message</a>
 </body>
 </html>
