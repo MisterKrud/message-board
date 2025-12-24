@@ -1,6 +1,8 @@
-<form method ="POST" action="/new" style="display: block;">
-    <input name="messageText" id="messageText" placeholder="message" style="padding: .5rem; margin: .5rem;"></input>
+<%- include('navbar', {links: links}) %>
+
+<form class = "input-form" method ="POST" action="/new" style="display: block;">
+    <textarea class= "message-text" name="messageText" id="messageText" placeholder="message" style="padding: .5rem; margin: .5rem;"></textarea>
     <br>
-    <input type="text" name="messageUser" id="messageUser" placeholder="name" style="padding: .5rem; margin: .5rem">
+    <input class="message-user" name="messageUser" id="messageUser" placeholder="name" style="padding: .5rem; margin: .5rem"></input>
     <button type="submit">Submit</button>
 </form>

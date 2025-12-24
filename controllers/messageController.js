@@ -1,4 +1,5 @@
 const db = require('../db')
+const links = require('../links')
 
 
 
@@ -12,6 +13,6 @@ if (!message) {
     return res.status(404).send("Message not found")
 }
 
-  res.render('messageView', { message})
+  res.render('messageView', { message, links: links})
 }
 module.exports = {getMessage}

@@ -4,13 +4,14 @@ const indexRouter = Router();
 const db = require('../db.js')
 const messages = db.messages
 
+const links = require('../links')
 indexRouter.get('/', (req, res) => {
-    res.render('index', {title: 'Mini Messageboard', messages: messages} )
+    res.render('index', {title: 'Mini Messageboard', messages: messages, links: links} )
     
 })
 
 indexRouter.get('/new', (req, res) =>{
-    res.render('form')
+    res.render('form', {links: links})
 })
 
 indexRouter.post('/new', (req, res) =>{

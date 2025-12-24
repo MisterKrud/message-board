@@ -4,6 +4,7 @@ const path = require('node:path')
 const indexRouter = require('./routes/indexRouter')
 const messageRouter = require('./routes/messageRouter')
 const assetsPath = path.join(__dirname, 'public')
+const links = require('./links')
 
 
 
@@ -16,9 +17,9 @@ app.use(express.urlencoded({extended: true}));
 app.use('/', indexRouter);
 app.use('/messages', messageRouter)
 
-app.get('/new', (req, res) =>{
-    res.render('form')
-})
+// app.get('/new', (req, res) =>{
+//     res.render('form', {links: links})
+// })
 
 const PORT = 3000
 
@@ -28,3 +29,4 @@ app.listen(PORT, (error) => {
     }
     console.log(`Webserver active on port: ${PORT}`)
 })
+

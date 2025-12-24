@@ -1,11 +1,12 @@
-
-
-<div>   
-  <%= message.text %>
+<%- include('navbar', {links: links}) %>
+<div class="message-view-container">
+<div class="message-detail">   
+ Message: <%= message.text %>
 </div>
-<div>
-   <%= message.user %>
+<div class="message-detail">
+  Sent by:  <%= message.user %>
 </div>
-<div>
-   <%= message.added %>
+<div class="message-detail">
+  Timestamp:  <%= message.added %>
+</div>
 </div>
