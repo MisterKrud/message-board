@@ -1,4 +1,34 @@
 body{
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 600px;
+    margin: 2rem auto;
+      color: white;
+    background-color:midnightblue;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.message-list{
+    border: white 1px solid;
+    border-radius: 5px;
+    padding: 0 1rem 1rem;
+  
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+nav>ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.view-message-details{
+    font-size: .8rem;
+    font-style: italic;
+
 }
