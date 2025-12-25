@@ -6,20 +6,14 @@ const messageRouter = require('./routes/messageRouter')
 const assetsPath = path.join(__dirname, 'public')
 const links = require('./links')
 
-
-
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
+
 app.use(express.static(assetsPath));
 app.use(express.urlencoded({extended: true}));
 
-
 app.use('/', indexRouter);
 app.use('/messages', messageRouter)
-
-// app.get('/new', (req, res) =>{
-//     res.render('form', {links: links})
-// })
 
 const PORT = 3000
 

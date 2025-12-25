@@ -1,30 +1,27 @@
 <html>
 <head>
-      <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/styles.css">
     <title>Homepage</title>
 </head>
+
 <body>
     <%- include('navbar', {links: links}) %>
-    <h3>Messages</h3>
-    <ul class="message-list">
-        
+        <h3>Messages</h3>
+        <ul class="message-list">
             <% for (let i=0; i<messages.length; i++) { %>
-               
-                   <h5 style="margin-bottom: .2rem; font-size: 1rem;"> <%=messages[i].user%></h5>
-                    <li class="message-text">
-                        <%=messages[i].text%>
+                <h5 style="margin-bottom: .2rem; font-size: 1rem;">
+                    <%=messages[i].user%>
+                </h5>
+                <li class="message-text">
+                    <%=messages[i].text%>
                         <br>
-                       <a class="view-message-details" href="/messages/<%= messages[i].id %>">View message details</a>
-                    </li>
-                     
-                  
-                    <% } %>
-                    
-                <br>
-    <a href="new" >
-        <button class="new-message">New post</button>
-        </a>
-    </ul>
-    
+                        <a class="view-message-details" href="/messages/<%= messages[i].id %>">View message details</a>
+                </li>
+                <% } %>
+                    <br>
+                    <a href="new">
+                        <button class="new-message">New post</button>
+                    </a>
+        </ul>
 </body>
 </html>
