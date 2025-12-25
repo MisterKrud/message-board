@@ -5,12 +5,14 @@
 </head><%- include('navbar', {links: links}) %>
 <div class="message-view-container">
 <div class="message-detail">   
- Message: <%= message.text %>
+ <span class="message-view-component-title">Message: </span><%= message.text %>
 </div>
+<hr class="message-view-divider">
 <div class="message-detail">
-  Sent by:  <%= message.user %>
+  <span class="message-view-component-title">Sent by:  </span><%= message.user %>
 </div>
-<div class="message-detail">
-  Timestamp:  <%= message.added %>
+<hr class="message-view-divider">
+<div class="message-detail timestamp">
+   <span class="message-view-component-title" >Timestamp:  </span><%= message.added %>
 </div>
 </div>

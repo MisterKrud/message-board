@@ -32,3 +32,19 @@ ul{
     font-style: italic;
 
 }
+
+.message-view-divider{
+
+    border: .005rem white solid;
+    width: 50%;
+    margin-left: 0;
+}
+
+.message-view-component-title{
+    font-weight: bold;
+}
+
+.timestamp{
+    font-size: .6rem;
+    font-style: italic;
+}
