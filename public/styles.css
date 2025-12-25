@@ -1,16 +1,33 @@
 body{
-    max-width: 600px;
+    max-width: 400px;
     margin: 2rem auto;
+    padding: 0 2rem;
       color: white;
     background-color:midnightblue;
     font-family: 'Courier New', Courier, monospace;
 }
 
+button{
+    font-family: 'Courier New', Courier, monospace;
+    padding: .3rem 1rem;
+    
+}
+
+button:hover{
+    background-color:firebrick;
+    color: whitesmoke;
+}
+
 .message-list{
-    border: white 1px solid;
-    border-radius: 5px;
-    padding: 0 1rem 1rem;
+    /* border: white 1px solid;
+    border-radius: 5px; */
+    padding: 0 1rem 2rem;
+    
   
+}
+
+.message-text{
+    margin-left: 1rem;
 }
 
 a{
@@ -18,9 +35,16 @@ a{
     text-decoration: none;
 }
 
+nav{
+    
+    margin-left: 0rem;
+    font-weight: bold;
+}
+
 nav>ul{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    margin-left: -2rem;
 }
 
 ul{
@@ -46,5 +70,18 @@ ul{
 
 .timestamp{
     font-size: .6rem;
+    font-style: italic;
+}
+
+.new-message{
+   float:right;
+}
+
+h5{
+    font-size: 1.8rem;
+}
+
+.home-link{
+    text-decoration:underline;
     font-style: italic;
 }

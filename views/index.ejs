@@ -11,7 +11,7 @@
             <% for (let i=0; i<messages.length; i++) { %>
                
                    <h5 style="margin-bottom: .2rem; font-size: 1rem;"> <%=messages[i].user%></h5>
-                    <li>
+                    <li class="message-text">
                         <%=messages[i].text%>
                         <br>
                        <a class="view-message-details" href="/messages/<%= messages[i].id %>">View message details</a>
@@ -20,9 +20,11 @@
                   
                     <% } %>
                     
-                
+                <br>
+    <a href="new" >
+        <button class="new-message">New post</button>
+        </a>
     </ul>
-    <br>
-    <a href="new">message</a>
+    
 </body>
 </html>
