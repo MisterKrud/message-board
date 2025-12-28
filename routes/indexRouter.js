@@ -15,7 +15,9 @@ const links = require('../links')
 indexRouter.get("/", searchControllers.getAllMessagePosts)
 
 indexRouter.get('/new', (req, res) => {
-    res.render('form', { links: links })
+    res.render('form', { 
+        title: "New message"
+     })
 })
 
 indexRouter.post('/new', messageControllers.postNewMessage)

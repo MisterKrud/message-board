@@ -2,8 +2,9 @@
      <link rel="stylesheet" href="/styles.css">
 </head>
 
-<%- include('navbar', {links: links}) %>
-
+<%- include('navbar') %>
+<%- include("errors") %>
+<h3><%= title %></h3>
 <form class = "input-form" method ="POST" action="/new" style="display: block;">
     <textarea class= "message-text" cols="33" name="messageText" id="messageText" placeholder="message" style="padding: .5rem; margin: .5rem;"></textarea>
     <br>

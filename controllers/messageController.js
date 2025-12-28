@@ -1,5 +1,6 @@
 const db = require('../db/queries')
 const links = require('../links')
+const { body, validationResult, matchedData } = require("express-validator")
 
 const getMessageDetails = async (req, res) => {
   console.log("rew.params: ", req.params.messageId)
@@ -20,8 +21,7 @@ const getMessageDetails = async (req, res) => {
 
 const validateNewPost = [
     body("messageText").trim()
-    .isLength({min: 1, max: 1000}).withMessage('Post must be bteween 1 and 1000 characters')
-    .escape(),
+    .isLength({min: 1, max: 1000}).withMessage('Post must be between 1 and 1000 characters'),
     body("messageUser").trim()
     .isAlphanumeric().withMessage('Username can only contain alphanumeric characters')
     .isLength({min: 3, max: 20}).withMessage('Username must be between 3 and 20 characters long')
@@ -31,7 +31,15 @@ const validateNewPost = [
 
 const postNewMessage = [ 
   validateNewPost, async (req, res) => {
-    const { messageText, messageUser } = req.body
+    const errors = validationResult(req);
+    console.log(validationResult(req))
+    if(!errors.isEmpty()){
+      return res.status(400).render("form", {
+        title: "New Message",
+        errors: errors.array(),
+      })
+    }
+    const { messageText, messageUser } = matchedData(req)
     const added = new Date();
    await db.postNewMessage(messageText, messageUser, added)
     res.redirect('/');
@@ -41,5 +49,6 @@ const postNewMessage = [
 
 module.exports = { 
   getMessageDetails,
-  postNewMessage
+  postNewMessage,
+  validateNewPost,
  }
