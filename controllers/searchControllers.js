@@ -1,5 +1,11 @@
 const db = require('../db/queries')
 
+const { body, validatioResult, matchedData } = require("express-validator")
+
+const alphaErr = "must only contain letters"
+const lengthErr = "is too long. Maximum character length is"
+
+
 
 //This needs thinking through
 const getAllMessagePosts = async(req, res) => {

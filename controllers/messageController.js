@@ -18,14 +18,26 @@ const getMessageDetails = async (req, res) => {
 }
 
 
-const postNewMessage = async (req, res) => {
+const validateNewPost = [
+    body("messageText").trim()
+    .isLength({min: 1, max: 1000}).withMessage('Post must be bteween 1 and 1000 characters')
+    .escape(),
+    body("messageUser").trim()
+    .isAlphanumeric().withMessage('Username can only contain alphanumeric characters')
+    .isLength({min: 3, max: 20}).withMessage('Username must be between 3 and 20 characters long')
+]
+
+
+
+const postNewMessage = [ 
+  validateNewPost, async (req, res) => {
     const { messageText, messageUser } = req.body
     const added = new Date();
    await db.postNewMessage(messageText, messageUser, added)
     res.redirect('/');
 
 }
-
+];
 
 module.exports = { 
   getMessageDetails,
