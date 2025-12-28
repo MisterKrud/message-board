@@ -9,10 +9,10 @@ module.exports = new Pool({
     database: process.env.DB_NAME,
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
-     ssl: {
-    rejectUnauthorized: true,
-    ca: fs.readFileSync("./ca.pem").toString(),
-  },
+//      ssl: {
+//     rejectUnauthorized: true,
+//     ca: fs.readFileSync("./ca.pem").toString(),
+//   },
     max: 5,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 2000,
