@@ -1,16 +1,33 @@
-const db = require('../db')
+const db = require('../db/queries')
 const links = require('../links')
 
-const getMessage = async (req, res) => {
-  const { messageId } = req.params
+const getMessageDetails = async (req, res) => {
+  console.log("rew.params: ", req.params.messageId)
+  const messageId  = Number(req.params.messageId)
 
-  const message = await db.getMessage(messageId)
+  const message = await db.getMessageDetails(messageId)
   console.log('messageId:', messageId);
-  console.log('messages:', db.messages);
+  console.log(message)
+ 
   if (!message) {
     return res.status(404).send("Message not found")
   }
 
-  res.render('messageView', { message, links: links })
+  res.render('messageView', { 
+    message: message })
 }
-module.exports = { getMessage }
+
+
+const postNewMessage = async (req, res) => {
+    const { messageText, messageUser } = req.body
+    const added = new Date();
+   await db.postNewMessage(messageText, messageUser, added)
+    res.redirect('/');
+
+}
+
+
+module.exports = { 
+  getMessageDetails,
+  postNewMessage
+ }

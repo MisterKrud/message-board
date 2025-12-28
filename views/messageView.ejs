@@ -1,13 +1,13 @@
 
 <head>
    <link rel="stylesheet" href="/styles.css">
-</head><%- include('navbar', {links: links}) %>
+</head><%- include('navbar') %>
 <div class="message-view-container">
 <div class="message-detail">   
- <span class="message-view-component-title">Message: </span><%= message.text %>
+ <span class="message-view-component-title">Message: </span><%= message.message %>
 </div>
 <div class="message-detail">
-  <span class="message-view-component-title">Sent by:  </span><%= message.user %>
+  <span class="message-view-component-title">Sent by:  </span><%= message.username %>
 </div>
 <hr class="message-view-divider">
 <div class="message-detail timestamp">

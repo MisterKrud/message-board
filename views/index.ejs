@@ -5,18 +5,18 @@
 </head>
 
 <body>
-    <!-- <%- include('navbar', {links: links}) %> -->
+    <!-- <%- include('navbar') %> -->
      <hr>
         <h3>Messages</h3>
         <ul class="message-list">
-            <% for (let i=0; i<messages.length; i++) { %>
+            <% for (let i=0; i<results.length; i++) { %>
                 <h5 style="margin-bottom: .2rem; font-size: 1rem;">
-                    <%=messages[i].user%>
+                    <%=results[i].username%>
                 </h5>
                 <li class="message-text">
-                    <%=messages[i].text%>
+                    <%=results[i].message%>
                         <br>
-                        <a class="view-message-details" href="/messages/<%= messages[i].id %>">View message details</a>
+                        <a class="view-message-details" href="/messages/<%= results[i].id %>">View message details</a>
                 </li>
                 <% } %>
                     <br>
@@ -25,7 +25,9 @@
                     </a>
         </ul>
         <hr>
+        <%- include("search") %>
+      
+
 </body>
 </html>
 
-<!-- pg_dropcluster 16 main -->

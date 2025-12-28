@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+<body>
+    <h3>Search users</h3>
+    <form action="/userSearchResults" method="GET">
+    <label for="usersearch">Username: </label>
+    <input type="text" name="usersearch" id="usersearch">
+    <button type="submit">Search users</button>
+    
+</form>
+
+<br><hr><br>
+<h3>Search messages</h3>
+<form action="/messageSearchResults" method="GET">
+    <label for="messagesearch">Message: </label>
+    <input type="text" name="messagesearch" id="messagesearch">
+    <button type="submit">Search messages</button>
+</form>
+
+</body>
+</html>
+
