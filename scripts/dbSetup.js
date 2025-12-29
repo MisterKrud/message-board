@@ -1,31 +1,35 @@
 
-require("dotenv").config();
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 const { Client } = require("pg");
-const fs = require("fs");
+
 
 const env = process.argv[2] || "development";
 
-let connectionString;
-let ssl;
 
-console.log(process.env.PROD_DB_URL)
+const connectionString =
+  process.env.NODE_ENV === "production"
+    ? process.env.DATABASE_URL
+    : process.env.DEV_DB_URL;
 
-if (env === "production") {
-  connectionString = process.env.DATABASE_URL;
-  ssl = { rejectUnauthorized: false };
-} else {
-  connectionString = process.env.DEV_DB_URL;
-  ssl = false;
-}
+const ssl =
+  process.env.NODE_ENV === "production"
+    ? { rejectUnauthorized: false }
+    : false;
+
+
+
+
 
 const client = new Client({ connectionString, ssl });
 
 async function main() {
   try {
     await client.connect();
-    console.log(`Connected to ${env} database`);
+    console.log(`Connected to database`);
 
-    // Example table creation
+
     await client.query(`
       CREATE TABLE IF NOT EXISTS messages(
 id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -46,5 +50,9 @@ INSERT INTO messages (username, message, added)
     await client.end();
   }
 }
+
+console.log("NODE_ENV =", process.env.NODE_ENV);
+console.log("DATABASE_URL exists =", !!process.env.DATABASE_URL);
+
 
 main();

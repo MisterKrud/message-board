@@ -26,3 +26,6 @@ app.listen(PORT,  (error) => {
     console.log(`Webserver active on port: ${PORT}`)
 })
 
+console.log("NODE_ENV =", process.env.NODE_ENV);
+console.log("DATABASE_URL exists =", !!process.env.DATABASE_URL);
+
