@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== "production") {
 const { Client } = require("pg");
 
 
-const env = process.argv[2] || "development";
+
 
 
 const connectionString =
