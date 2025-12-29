@@ -15,11 +15,11 @@ const config = env === "production" ? {
     //     ca: fs.readFileSync("./ca.pem").toString(),
     // },
 } : {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT,
+    host: process.env.DEV_DB_HOST,
+    user: process.env.DEV_DB_USER,
+    database: process.env.DEV_DB_NAME,
+    password: process.env.DEV_DB_PASSWORD,
+    port: process.env.DEV_DB_PORT,
 };
 
 module.exports = new Pool({
