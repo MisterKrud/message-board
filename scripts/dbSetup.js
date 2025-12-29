@@ -11,10 +11,10 @@ let ssl;
 console.log(process.env.PROD_DB_URL)
 
 if (env === "production") {
-  connectionString = process.env.PROD_DB_URL;
+  connectionString = process.env.DATABASE_URL;
   ssl = { rejectUnauthorized: false };
 } else {
-  connectionString = process.env.DEV_DATABASE_URL;
+  connectionString = process.env.DEV_DB_URL;
   ssl = false;
 }
 
