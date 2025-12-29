@@ -1,13 +1,15 @@
 
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 console.log("NODE_ENV:", process.env.NODE_ENV);
 console.log("DATABASE_URL:", process.env.DATABASE_URL);
 console.log("DEV_DB_URL:", process.env.DEV_DB_URL);
 console.log("ENV VARIABLES KEYS:", Object.keys(process.env));
 
 
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
+
 const { Client } = require("pg");
 
 
