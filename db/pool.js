@@ -1,13 +1,15 @@
-require("dotenv").config();
-const { Pool } = require("pg");
-const fs = require("fs");
-
 const env = process.env.NODE_ENV || "development";
+
+if (env !== "production") {
+  require("dotenv").config();
+}
+
+const { Pool } = require("pg");
 
 const connectionString =
   env === "production"
-    ? process.env.DATABASE_URL      
-    : process.env.DEV_DB_URL; 
+    ? process.env.DATABASE_URL
+    : process.env.DEV_DB_URL;
 
 const pool = new Pool({
   connectionString,
