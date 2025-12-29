@@ -1,41 +1,31 @@
+
 require("dotenv").config();
 const { Client } = require("pg");
 const fs = require("fs");
 
-// Read environment from command line
-const env = process.argv[2]; // e.g., "development" or "production"
-if (!env) {
-  console.error("Usage: node dbSetup.js <development|production>");
-  process.exit(1);
-}
+const env = process.argv[2] || "development";
 
-// Decide connection config based on environment
-let config;
-if (env === "development") {
-  config = {
-    connectionString: process.env.DEV_DATABASE_URL,
-  };
-} else if (env === "production") {
-  config = {
-    connectionString: process.env.PROD_DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: true,
-      ca: fs.readFileSync("./ca.pem").toString(),
-    },
-  };
+let connectionString;
+let ssl;
+
+console.log(process.env.PROD_DB_URL)
+
+if (env === "production") {
+  connectionString = process.env.PROD_DB_URL;
+  ssl = { rejectUnauthorized: false };
 } else {
-  console.error("Invalid environment. Use 'development' or 'production'");
-  process.exit(1);
+  connectionString = process.env.DEV_DATABASE_URL;
+  ssl = false;
 }
 
-const client = new Client(config);
+const client = new Client({ connectionString, ssl });
 
 async function main() {
   try {
     await client.connect();
     console.log(`Connected to ${env} database`);
 
-    // Example: create table if not exists
+    // Example table creation
     await client.query(`
       CREATE TABLE IF NOT EXISTS messages(
 id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -51,7 +41,7 @@ INSERT INTO messages (username, message, added)
 
     console.log("Database setup complete!");
   } catch (err) {
-    console.error("Error:", err);
+    console.error(err);
   } finally {
     await client.end();
   }
