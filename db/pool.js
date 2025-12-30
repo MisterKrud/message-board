@@ -13,7 +13,7 @@ const pool = new Pool({
   connectionTimeoutMillis: 10000,
   ssl: {
     rejectUnauthorized: true,
-    ca: process.env.DB_CA_CERT.replace(/\\n/g, "\n"),
+    ca: process.env.DB_CA_CERT,
   },
 });
 
